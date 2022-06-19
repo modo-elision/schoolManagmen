@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <?php require_once 'view/head.html';   
+         //echo "<pre>"; print_r($this->inspection_list);  echo "</pre>";
+      ?>
+      
+   </head>
+   <body onload="myFunction()">
+      <?php require_once 'view/header.html';?>
+      <!-- section one start -->
+      <script type="text/javascript">
+
+         function findinspection(str) {
+           console.log('search: ' + str)
+         }
+
+         $('#search_inspection').keyup(function(e) {
+           clearTimeout(timeoutID);
+           const value = e.target.value
+           timeoutID = setTimeout(() => findinspection(value), 500)
+         });
+
+         // $.ajax(
+         //   'request_ajax_data.php',
+         //   {
+         //       success: function(data) {
+         //         alert('AJAX call was successful!');
+         //         alert('Data from the server' + data);
+         //       },
+         //       error: function() {
+         //         alert('There was some error performing the AJAX call!');
+         //       }
+         //    }
+         // );
+      </script>
+
+
+      <script type="text/javascript">
+      /*$(document).ready(function() {
+          $('#search_inspection').keyup(function(e) {
+              //e.preventDefault();
+              clearTimeout(timeoutID);
+              const this.value = e.target.value
+              timeoutID = setTimeout(() => findinspection(value), 500)
+              $.ajax({
+                  type: "POST",
+                  url: 'inspection_ajax.php',
+                  data: $(this).serialize(),
+                  success: function(response)
+                  {
+                      var jsonData = JSON.parse(response);
+        
+                      // user is logged in successfully in the back-end
+                      // let's redirect
+                      /*if (jsonData.success == "1")
+                      {
+                          location.href = 'my_profile.php';
+                      }
+                      else
+                      {
+                          alert('Invalid Credentials!');
+                      }* /
+                 }
+             });
+           });
+      });*/
+      </script>
+
+
+      <section class="position-relative">
+         <div class="container-fluid mp-sec-bg">
+            <div class="row">
+               <div class="col-12 p-0">
+                  <div class="section-two-bg">
+                     <div class="text-group py-5 text-center" style="background-position:center; background-size: cover;background-repeat:no-repeat;background-image:url('images/inspect_back.jfif')">
+                        <!img src="images/backside.jpg" style="margin:auto; width:200px;display:block" />
+                        <div class="h1 text-white">
+                           Online Inspection Managment System<span class="mp-text-secondary">.</span>
+                        </div>
+                        <div class="text-para mx-5 px-5 py-3">
+                           <p class="stay-secure-para text-white">
+                              Inspection Managment System for registering inspection and manageing to generate Reports Automatically
+                           </p>
+                        </div>
+                        <div class="row no-gutters">
+                           <div class="col-4 m-auto pt-3 pb-3">
+                              <div class="job-search-div">
+                                <!--  <div class="form-group m-0">
+                                    <input type="Search" class="form-control searchInput" id="search_inspection" placeholder="Search Inspection" name="search_inspection" >
+                                    <span><i class="fa fa-search" aria-hidden="true"></i></span>
+                                 </div> -->
+                              </div>
+                           </div>
+                        </div>
+                     </div> 
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- section one end -->
+      <section class="position-relative py-2 my-2">
+         
+<!-- add condition as per above code  -->
+         <div class="container-fluid mp-sec-bg">
+            <form action="" method="get">
+            <div class="row">
+               
+               <div class="col-3 ">
+                  <label for="sel1">From Date</label>
+                  <input id="from_date" type="date" name="from_date" onchange="this.form.submit()" value="">
+               </div>
+               <div class="col-3 ">
+                  <label for="sel1">To Date</label>
+                  <input id="to_date" type="date" name="to_date" onchange="this.form.submit()" value="">
+               </div></div>
+               <div class="col-3 ml-auto pt-3 pb-3">
+                      <div class="form-group">
+                        
+                        <label for="sel1">Filter by date</label>
+                        <select id="date" class="form-control" id="sel1" name="date" onchange="this.form.submit()" value="">
+                           <option value="ASC" >ASC</option>
+                           <option value="DESC">DESC</option>
+                        </select>
+                      </div>
+               </div>
+               <input  id="target" type="submit" name="submit" value="btnsubmit" hidden>
+               </form>
+            </div>
+         </div>
+
+<script type="text/javascript">
+   $('#from_date').change(function(event){ 
+      $( "#target" ).click();
+});
+
+$('#to_date').change(function(event){ 
+    $( "#target" ).click();
+});
+
+$('#date').change(function(event){ 
+    $( "#target" ).click();
+});
+function myFunction() {
+//alert("Hello, User!");
+$('#from_date').val('<?php echo $_GET['from_date'] ?>');
+$('#to_date').val('<?php echo $_GET['to_date'] ?>');
+$('#date').val('<?php echo $_GET['date'] ?>');
+
+}
+</script>
+         
+         <div class="container-fluid">
+            <div class="row py-3">
+               <?php
+                for($i=0;$i<count($this->inspection_list);$i++)
+                {?><div class="col-lg-4 col-sm-12">
+                  <a href="view_inspection.php?inspection_id=<?php echo $this->inspection_list[$i]['inspection_id'];?>">
+                  <div class="open-job-tile"> 
+                     <div class="col-lg-4 col-sm-12">
+                  <!-- <div class="pr-2">
+                     <i class="fa fa-pencil" aria-hidden="true" id="date">
+                        <a href="edit_inspection.php?inspection_id=<?php echo $this->inspection_list[$i]['inspection_id'];?>">
+                     </i>
+                  </div>
+               </div> -->
+                     <!-- <div class="op-job-title">Inspector Name:<?php echo $this->inspection_list[$i]['inspector_name']?></div> -->
+                     <div class="op-job-title"><?php echo $this->inspection_list[$i]['site']?></div>
+                     <div class="op-job-companyName"><?php echo $this->inspection_list[$i]['jobDescription']?></div>
+                     <div class="op-job-details">
+                        <div class="op-job-expr pd-around"><span><i class="fa fa-briefcase" aria-hidden="true"></i></span> <?php echo $this->inspection_list[$i]['inspector']?> (Inspector)</div>
+                        <div class="op-job-salary pd-around"><span><i class="fa fa-life" aria-hidden="true"></i></span><?php echo $this->inspection_list[$i]['workArea']?></div>
+                        <div class="op-job-location pd-around"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span> <?php echo $this->inspection_list[$i]['workArea']?></div>
+                     </div>
+                     <div class="op-job-tech">
+                        <div class="pr-2"><i class="fa fa-pencil" aria-hidden="true" id="date"></i></div>
+                        <div class="op-job-technologies">Posted on:<?php echo $this->inspection_list[$i]['submited_date']?></div>
+                     </div>
+                     <div class="op-job-tech">
+                        <div class="pr-2"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                        <div class="op-job-tech-desc"><?php echo $this->inspection_list[$i]['type']?></div>
+                     </div>
+                  </div>
+               </div></a>
+            </div>
+               <?php }?>
+            </div>
+         </div>
+      </section>
+      <!-- Footer start from here -->
+      <section>
+         <footer class="text-center">
+            <div class="footer_below">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <p> Copyright © Website 2022.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+      </section>
+      <!-- Footer start from here -->
+   </body>
+</html>

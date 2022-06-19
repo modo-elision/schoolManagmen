@@ -1,0 +1,60 @@
+<header class="px-5">
+         <nav class="navbar navbar-expand-lg py-3 mp-nav fixed-top">
+            <a class="navbar-brand mp-text-primary font-weight-bold" title="Happy tech jobs Application" href="index.php">
+            Inspection Management System
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navb">
+               <ul class="navbar-nav m-auto">
+                  <?php 
+                     if(!empty($_SESSION)){
+                        if($_SESSION["User_id"]!=NULL){
+                           echo '<li class="nav-item mx-4">
+                     <a class="nav-link mp-text-primary" href="inspection_list.php?from_date=2022-03-01&to_date=2022-04-05&date=ASC&submit=btnsubmit">List of Inspection</a>
+                  </li>';
+                           if($_SESSION["type"]=="inspector"){
+                        
+                        ?>
+                  <li class="nav-item mx-4">
+                     <a class="nav-link mp-text-primary" href="inspection_submit.php">Add New Inspection</a>
+                  </li>
+                  <?php }
+                     else if($_SESSION["type"]=="manager"){
+                  ?>
+                  <li class="nav-item mx-4">
+                     <a class="nav-link mp-text-primary" href="report.php">Report</a>
+                  </li>
+                  <?php
+                        }
+                     }
+                  }
+                  ?>
+                  
+                  <!-- <li class="nav-item mx-4">
+                     <a class="nav-link mp-text-primary" href="myProfile.php">My Profile</a>
+                  </li> -->
+                  <!--li class="nav-item mx-4">
+                     <a class="nav-link mp-text-primary" href="my-profile.php">My Profile</a>
+                  </li-->
+                  <?php 
+                     if(!empty($_SESSION)){
+                        if($_SESSION["User_id"]==NULL){?>
+                  <li class="nav-item mx-4">
+                     <a class="nav-link mp-text-primary" href="sign-in.php">Sign In</a>
+                  </li>
+                  <?php }
+                  else if($_SESSION["User_id"]!=NULL){?>
+                  <li class="nav-item mx-4">
+                     <a class="nav-link mp-text-primary" href="sign-out.php">Sign Out</a>
+                  </li>
+                  <?php }}else{?>
+                  <li class="nav-item mx-4">
+                     <a class="nav-link mp-text-primary" href="sign-in.php">Sign In</a>
+                  </li>
+                  <?php }?>
+               </ul>
+            </div>
+         </nav>
+      </header>

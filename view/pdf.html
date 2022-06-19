@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<?php $data=$this->inspection; 
+//echo "<pre>";print_r ($data);
+
+?>
+<body onload="window.print();">
+<div  style="text-align:center;">
+	<h4 class="display-4">Health, Safety, Quality and Environmental Site Inspection</h4>
+</div>
+<div style="width:100%">
+		<table id="metaDataTable" class="table table-striped table-bordered table-hover" >
+			<tr>
+
+				<th>Site:</th>
+				<td><input type="text" id="site" name="site" value="<?php echo $data['primary']['site'];?>"/></td>
+				<th>Completed By:</th>
+				<td><input type="text" id="completedBy" name="completedBy" value="<?php echo $data['primary']['completedBy'];?>"/></td>
+				<th>Date:</th>
+				<td><input type="text" id="date" name="date" value="<?php echo $data['primary']['date'];?>"/></td>
+			</tr>
+			<tr>
+				<th>Work Area:</th>
+				<td><input type="text" id="workArea" name="workArea" value="<?php echo $data['primary']['jobDescription'];?>"/></td>
+				<th>Job Description:</th>
+				<td colspan="3"><input type="text" id="jobDescription" name="jobDescription" value="<?php echo $data['primary']['jobDescription'];?>" style="width: -webkit-fill-available;"/></td>
+			</tr>
+			<tr>
+				<th>Supervisor:</th>
+				<td><input type="text" id="site" name="site" value="<?php echo $data['primary']['Supervisor'];?>"/></td>
+				<th>Inspector:</th>
+				<td><input type="text" id="inspector" name="inspector" value="<?php echo $data['primary']['inspector'];?>"/></td>
+				<th>Type:</th>
+				<td><input type="text" id="type" name="type" value="<?php echo $data['primary']['type'];?>"/></td>
+			</tr>
+		</table>
+		<br/>
+		
+			<div class="table-responsive-md ">
+				<table id="surveyTable"  class="table table-striped table-bordered table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th></th>
+							<th scope="col">Intervention</th>
+							<th scope="col">Completed</th>
+							<th scope="col">Action Taken</th>
+							<th scope="col">Comment</th>
+						</tr>
+					</thead>
+					<tr>
+						<th scope="row">A. Working Standards</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td scope="row">1. Work At Height</td>
+						<td><input type="text" value="<?php echo $data['working']['workHeightInterventions'];?>" name="workHeightInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['working']['workHeightComment'];?>" name="workHeightComment"/></td>
+						<td><input type="text" value="<?php echo $data['working']['workHeightCompleted'];?>" name="workHeightCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['working']['workHeightActionTaken'];?>" name="workHeightActionTaken"/></td>
+					</tr>
+					<tr>
+						<td scope="row">2. Lifting Operations - Crane, Fork, Truck, Hoists etc</td>
+						<td><input type="text" value="<?php echo $data['working']['liftingOpsInterventions'];?>" name="liftingOpsInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['working']['liftingOpsComment'];?>" name="liftingOpsComment"/></td>
+						<td><input type="text" value="<?php echo $data['working']['liftingOpsCompleted'];?>" name="liftingOpsCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['working']['liftingOpsActionTaken'];?>" name="liftingOpsActionTaken"/></td>
+					</tr>
+					<tr>
+						<td scope="row">3. Certification - Daily Checksheets for MEWP and FLT</td>
+						<td><input type="text" value="<?php echo $data['working']['certificationInterventions'];?>" name="certificationInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['working']['certificationComment'];?>" name="certificationComment"/></td>
+						<td><input type="text" value="<?php echo $data['working']['certificationCompleted'];?>" name="certificationCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['working']['certificationActionTaken'];?>" name="certificationActionTaken"/></td>
+					</tr>
+					<tr>
+						<td scope="row">4. Confined Space Work</td>
+						<td><input type="text" value="<?php echo $data['working']['confinedSpaceInterventions'];?>" name="confinedSpaceInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['working']['confinedSpaceComment'];?>" name="confinedSpaceComment"/></td>
+						<td><input type="text" value="<?php echo $data['working']['confinedSpaceCompleted'];?>" name="confinedSpaceCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['working']['confinedSpaceActionTaken'];?>" name="confinedSpaceActionTaken"/></td>
+					</tr>
+					<tr>
+						<td scope="row">5. Electrical Work</td>
+						<td><input type="text" value="<?php echo $data['working']['electricalWorkInterventions'];?>" name="electricalWorkInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['working']['electricalWorkComment'];?>" name="electricalWorkComment"/></td>
+						<td><input type="text" value="<?php echo $data['working']['electricalWorkCompleted'];?>" name="electricalWorkCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['working']['electricalWorkActionTaken'];?>" name="electricalWorkActionTaken"/></td>
+					</tr>
+					<tr>
+						<th>B. Quality</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>6. Sight Set Up & Appearance, Signage</td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpInterventions'];?>" name="sightSignUpInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpComment'];?>" name="sightSignUpComment"/></td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpCompleted'];?>" name="sightSignUpCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpActionTaken'];?>" name="sightSignUpActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>7. Paperwork (Permits, Risk Assessments, Method Statement)</td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpInterventionsp'];?>" name="sightSignUpInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpCommentp'];?>" name="sightSignUpComment"/></td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpCompletedp'];?>" name="sightSignUpCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpActionTakenp'];?>" name="sightSignUpActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>8. Certification - Training, Insurance Inspection, Induction Current</td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpInterventionsc'];?>" name="sightSignUpInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpCommentc'];?>" name="sightSignUpComment"/></td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpCompletedc'];?>" name="sightSignUpCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['quality']['sightSignUpActionTakenc'];?>" name="sightSignUpActionTaken"/></td>
+					</tr>
+					<tr>
+						<th>C. Site Rules</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>9. Hot Work</td>
+						<td><input type="text" value="<?php echo $data['site']['hotWorkInterventions'];?>" name="hotWorkInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['site']['hotWorkComment'];?>" name="hotWorkComment"/></td>
+						<td><input type="text" value="<?php echo $data['site']['hotWorkCompleted'];?>" name="hotWorkCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['site']['hotWorkActionTaken'];?>" name="hotWorkActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>10. Isolation and Lock Offs</td>
+						<td><input type="text" value="<?php echo $data['site']['isolationInterventions'];?>" name="isolationInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['site']['isolationComment'];?>" name="isolationComment"/></td>
+						<td><input type="text" value="<?php echo $data['site']['isolationCompleted'];?>" name="isolationCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['site']['isolationActionTaken'];?>" name="isolationActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>11. Fire Exits and Escape Routes</td>
+						<td><input type="text" value="<?php echo $data['site']['fireExitsInterventions'];?>" name="fireExitsInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['site']['fireExitsComment'];?>" name="fireExitsComment"/></td>
+						<td><input type="text" value="<?php echo $data['site']['fireExitsCompleted'];?>" name="fireExitsCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['site']['fireExitsActionTaken'];?>" name="fireExitsActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>12. Awareness - Fire Exit, Assembly Point</td>
+						<td><input type="text" value="<?php echo $data['site']['assemblyPointInterventions'];?>" name="assemblyPointInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['site']['assemblyPointComment'];?>" name="assemblyPointComment"/></td>
+						<td><input type="text" value="<?php echo $data['site']['assemblyPointCompleted'];?>" name="assemblyPointCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['site']['assemblyPointActionTaken'];?>" name="assemblyPointActionTaken"/></td>
+					</tr>
+					<tr>
+						<th>D. Environmental</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>13. Waste Management</td>
+						<td><input type="text" value="<?php echo $data['environmental']['wasteMgmntInterventions'];?>" name="wasteMgmntInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['environmental']['wasteMgmntComment'];?>" name="wasteMgmntComment"/></td>
+						<td><input type="text" value="<?php echo $data['environmental']['wasteMgmntCompleted'];?>" name="wasteMgmntCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['environmental']['wasteMgmntActionTaken'];?>" name="wasteMgmntActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>14. Product Contamination</td>
+						<td><input type="text" value="<?php echo $data['environmental']['productContInterventions'];?>" name="productContInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['environmental']['productContComment'];?>" name="productContComment"/></td>
+						<td><input type="text" value="<?php echo $data['environmental']['productContCompleted'];?>" name="productContCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['environmental']['productContActionTaken'];?>" name="productContActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>15. COSHH & Asbestos</td>
+						<td><input type="text" value="<?php echo $data['environmental']['coshhInterventions'];?>" name="coshhInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['environmental']['coshhComment'];?>" name="coshhComment"/></td>
+						<td><input type="text" value="<?php echo $data['environmental']['coshhCompleted'];?>" name="coshhCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['environmental']['coshhActionTaken'];?>" name="coshhActionTaken"/></td>
+					</tr>
+					<tr>
+						<th>E. Protection Of Individuals</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>16. PPE</td>
+						<td><input type="text" value="<?php echo $data['protection']['ppeInterventions'];?>" name="ppeInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['protection']['ppeComment'];?>" name="ppeComment"/></td>
+						<td><input type="text" value="<?php echo $data['protection']['ppeCompleted'];?>" name="ppeCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['protection']['ppeActionTaken'];?>" name="ppeActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>17. Manual Handling</td>
+						<td><input type="text" value="<?php echo $data['protection']['manualHandlingInterventions'];?>" name="manualHandlingInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['protection']['manualHandlingComment'];?>" name="manualHandlingComment"/></td>
+						<td><input type="text" value="<?php echo $data['protection']['manualHandlingCompleted'];?>" name="manualHandlingCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['protection']['manualHandlingActionTaken'];?>" name="manualHandlingActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>18. Other Contractors</td>
+						<td><input type="text" value="<?php echo $data['protection']['otherContrInterventions'];?>" name="otherContrInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['protection']['otherContrComment'];?>" name="otherContrComment"/></td>
+						<td><input type="text" value="<?php echo $data['protection']['otherContrCompleted'];?>" name="otherContrCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['protection']['otherContrActionTaken'];?>" name="otherContrActionTaken"/></td>
+					</tr>
+					<tr>
+						<th>F. Tools, Cables & Other Equipments</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>19. Power Tools, Cables & Other Equipment</td>
+						<td><input type="text" value="<?php echo $data['tool']['powerToolsInterventions'];?>" name="powerToolsInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['tool']['powerToolsComment'];?>" name="powerToolsComment"/></td>
+						<td><input type="text" value="<?php echo $data['tool']['powerToolsCompleted'];?>" name="powerToolsCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['tool']['powerToolsActionTaken'];?>" name="powerToolsActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>20. Voltage Detector Checked</td>
+						<td><input type="text" value="<?php echo $data['tool']['voltageDetectInterventions'];?>" name="voltageDetectInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['tool']['voltageDetectComment'];?>" name="voltageDetectComment"/></td>
+						<td><input type="text" value="<?php echo $data['tool']['voltageDetectCompleted'];?>" name="voltageDetectCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['tool']['voltageDetectActionTaken'];?>" name="voltageDetectActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>21. Tools Used Fit For Purpose</td>
+						<td><input type="text" value="<?php echo $data['tool']['usedFitInterventions'];?>" name="usedFitInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['tool']['usedFitComment'];?>" name="usedFitComment"/></td>
+						<td><input type="text" value="<?php echo $data['tool']['usedFitCompleted'];?>" name="usedFitCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['tool']['usedFitActionTaken'];?>" name="usedFitActionTaken"/></td>
+					</tr>
+					<tr>
+						<th>G. Miscellaneous</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>22. Company Vehicles</td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['companyVehiclesInterventions'];?>" name="companyVehiclesInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['companyVehiclesComment'];?>" name="companyVehiclesComment"/></td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['companyVehiclesCompleted'];?>" name="companyVehiclesCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['companyVehiclesActionTaken'];?>" name="companyVehiclesActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>23. Fire Precautions</td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['firePrecsInterventions'];?>" name="firePrecsInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['firePrecsComment'];?>" name="firePrecsComment"/></td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['firePrecsCompleted'];?>" name="firePrecsCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['firePrecsActionTaken'];?>" name="firePrecsActionTaken"/></td>
+					</tr>
+					<tr>
+						<td>24. Workshop Conditions</td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['workshopCondInterventions'];?>" name="workshopCondInterventions"/></td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['workshopCondComment'];?>" name="workshopCondComment"/></td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['workshopCondCompleted'];?>" name="workshopCondCompleted"/></td>
+						<td><input type="text" value="<?php echo $data['miscellaneous']['workshopCondActionTaken'];?>" name="workshopCondActionTaken"/></td>
+					</tr>
+					<tr>
+						<th>Total Interventions By Section</th>
+						<td></td>
+					</tr>
+					<tr>
+						<td>A. Working Standards</td>
+						<td><input type="text" value="<?php echo $data['number']['working'];?>" name="totalBySectionWorkStandards"/></td>
+					</tr>
+					<tr>
+						<td>B. Quality</td>
+						<td><input type="text" value="<?php echo $data['number']['quality'];?>" name="totalBySectionWorkStandards"/></td>
+					</tr>
+					<tr>
+						<td>C. Site Rules</td>
+						<td><input type="text" value="<?php echo $data['number']['siterules'];?>" name="totalBySectionWorkStandards"/></td>
+					</tr>
+					<tr>
+						<td>D. Environmental</td>
+						<td><input type="text" value="<?php echo $data['number']['environmental'];?>" name="totalBySectionWorkStandards"/></td>
+					</tr>
+					<tr>
+						<td>E. Protection Of Individuals</td>
+						<td><input type="text" value="<?php echo $data['number']['protection'];?>" name="totalBySectionWorkStandards"/></td>
+					</tr>
+					<tr>
+						<td>F. Tools, Cables & Other Equipments</td>
+						<td><input type="text" value="<?php echo $data['number']['tools'];?>" name="totalBySectionWorkStandards"/></td>
+					</tr>
+					<tr>
+						<td>G. Miscellaneous</td>
+						<td><input type="text" value="<?php echo $data['number']['miscellaneous'];?>" name="totalBySectionWorkStandards"/></td>
+					</tr>
+					<tr>
+						<th>Overall</th>
+						<td><input type="text" value="<?php echo $data['number']['overall'];?>" name="totalBySectionOverall"/></td>
+					</tr>
+				</table>
+			</div>
+		
+		<br/>
+</div>
+</body>
+
+</html>

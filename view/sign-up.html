@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <?php require_once 'view/head.html';?>
+</head>
+
+<body>
+    <?php require_once 'view/header.html';?>
+    <!-- section one start -->
+    <section class="position-relative">
+    <div class="container-fluid login-container">
+            <div class="row">
+                <div class="col-4 mx-auto login-form-1 p-0">
+                    <form action="sign-up.php" method="post">
+                        <h3 class="mb-4">Welcome to Inspection Managment</h3>
+                        <?php
+                                if(!empty($error))
+                                {
+                                 if($error=='1'){   ?>
+                                <span id="danger">Password did not match</span>
+                            <?php    
+                            }
+                            else if($error=='2'){
+                            ?>
+                                <span id="danger">email already exist</span>
+                            <?php
+                        }
+                        }
+                            ?>
+                        <div class="form-group">
+                        <label class="label-text m-0">User Name</label>
+                            <input type="text" class="form-control" name="name"placeholder="Please enter username *" required value="" />
+                        </div>
+                        <div class="form-group">
+                        <label class="label-text m-0">Email Id</label>
+                            <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email"placeholder="Please enter email *" required value="" />
+                        </div>
+                        <div class="form-group">
+                        <label class="label-text m-0">Password</label>
+                            <input type="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Please enter password *" required name="password" id="txtNewPassword" value="" />
+                        </div>
+                        <div class="form-group">
+                        <label class="label-text m-0">Confirm Password</label>
+                            <input type="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"placeholder="confirm password *" required name="c_password" id="txtConfirmPassword" value="" />
+                        </div>
+                        <div class="registrationFormAlert" style="color:green;" id="CheckPasswordMatch"></div>
+                        <script>
+                        function checkPasswordMatch() {
+                            var password = $("#txtNewPassword").val();
+                            var confirmPassword = $("#txtConfirmPassword").val();
+                            if (password != confirmPassword)
+                                $("#CheckPasswordMatch").html("Passwords does not match!");
+                            else
+                                $("#CheckPasswordMatch").html("Passwords match.");
+                        }
+                        $(document).ready(function () {
+                           $("#txtConfirmPassword").keyup(checkPasswordMatch);
+                        });
+                        </script>
+                        <div class="form-group pt-2 text-center">
+                           <!input type="submit" class="btnSubmit"name="submit" value="Signup" />
+                           <button class="btn btn-primary" type="submit" name="submit" value="Signup" id="responceBtn" onclick="alert('Confirm Submit')";>
+                            Signup 
+                           </button>
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <a href="sign-in.php" class="ForgetPwd small">Already have an account?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- section one end -->
+</body>
+
+</html>

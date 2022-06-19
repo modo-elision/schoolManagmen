@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <?php require_once 'view/head.html';?>
+</head>
+
+<body>
+    <?php require_once 'view/header.html';?>
+    <!-- section one start -->
+    <section class="position-relative">
+    <div class="container-fluid login-container">
+            <div class="row">
+                <div class="col-4 mx-auto login-form-1 p-0">
+                    <form action="sign-in.php" method="post">
+                        <h3 class="mb-4">Welcome to Inspection Managment</h3>
+                        <?php
+                                if(!empty($this->login))
+                                if($this->login['error']['invalid']==1){?>
+                                <span id="danger">Invalid user name or password</span>
+                            <?php    
+                            }
+                            ?>
+                        <div class="form-group">
+                        <label class="label-text m-0">Email</label>
+                            <input type="text" class="form-control" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"placeholder="Please enter Email *" required value="" />
+                        </div>
+                        <div class="form-group">
+                        <label class="label-text m-0">Password</label>
+                            <input type="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Please enter password *" id="txtNewPassword" required name="password"value="" />
+                        </div>
+                        <span style="font-size: 70%;color:red;">* Passwords must contain at least 8 characters, including uppercase, lowercase letters and numbers.</span>
+                        <div id="confirm_password" class="form-group" hidden="" >
+                        <label class="label-text m-0">Confirm Password</label>
+                            <input type="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Please confirm password *" id="txtConfirmPassword" name="c_password" value="" />
+                        </div>
+                        <div class="registrationFormAlert" style="color:green;" id="CheckPasswordMatch"></div>
+                        <script>
+                        function checkPasswordMatch() {
+                            var password = $("#txtNewPassword").val();
+                            var confirmPassword = $("#txtConfirmPassword").val();
+                            if (password != confirmPassword)
+                                $("#CheckPasswordMatch").html("Passwords does not match!");
+                            else
+                                $("#CheckPasswordMatch").html("Passwords match.");
+                        }
+                        $(document).ready(function () {
+                           $("#txtConfirmPassword").keyup(checkPasswordMatch);
+                        });
+                        </script>
+                        <div id="ForgetPwdanc" class="form-group">
+                            <a href="javascript:void(0);" class="ForgetPwd small"  onclick="ForgetPwd();">Forgot Password?</a>
+                        </div>
+                        <div class="form-group pt-2 text-center">
+                           <input type="submit" id="loginbutton" class="btnSubmit" name="submit" value="Login" />
+                        </div>
+
+                        <div class="form-group">
+                            
+                            <a href="sign-up.php" class="ForgetPwd small">Don't have an account?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <?php require_once 'view/footer_js.html';?>
+    <!-- section one end -->
+</body>
+
+</html>

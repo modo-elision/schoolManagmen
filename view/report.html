@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <?php require_once 'view/head.html';?>
+</head>
+
+<body>
+    <?php require_once 'view/header.html';  $data =$this->inspection_list;
+        //echo "<pre>";print_r($data);
+    ?>
+<div class=" mt-2 px-2"><br><hr><br>
+    <!-- <div class="mb-2 d-flex justify-content-between align-items-center">
+        <div class="position-relative"> <span class="position-absolute search"><i class="fa fa-search"></i></span> <input class="form-control w-100" placeholder="Search by order#, name..."> </div>
+         <div class="px-2"> <span>Filters <i class="fa fa-angle-down"></i></span> <i class="fa fa-ellipsis-h ms-3"></i> </div> 
+    </div> -->
+    <div class="table-responsive ">
+        <table class="table table-responsive table-borderless">
+            <thead>
+                <tr class="bg-light">
+                    <th scope="col" width="5%">#</th>
+                    <th scope="col" width="20%">Month</th>
+                    <th scope="col" width="20%">Working Standards  Interventions</th>
+                    <th scope="col" width="20%">Quality Interventions</th>
+                    <th scope="col" width="20%">Site Rules Interventions </th>
+                    <th scope="col" width="20%">Environmental Interventions</th>
+                    <th scope="col" width="20%">Protection of Individuals Interventions</th>
+                    <th scope="col" width="20%">Tools and Cables Interventions</th>
+                    <th scope="col" width="20%">Miscellaneous Interventions</th>
+                    <th scope="col" class="text-end" width="30%"><span>Over ALL Interventions</span></th>
+                    <th scope="col" class="text-end" width="30%"><span>Total Interventions</span></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($data as $key=>$values){
+                    if(!empty($values)){
+                        $working=0;
+                            $quality=0;
+                            $siterules=0;
+                            $environmental=0;
+                            $protection=0;
+                            $tools=0;
+                            $miscellaneous=0;
+                            $overall=0;
+                            $total=0;
+                        foreach($values as $value){
+                            $working=$working+$value['working'];
+                            $quality=$quality+$value['quality'];
+                            $siterules=$siterules+$value['siterules'];
+                            $environmental=$environmental+$value['environmental'];
+                            $protection=$protection+$value['protection'];
+                            $tools=$tools+$value['tools'];
+                            $miscellaneous=$miscellaneous+$value['miscellaneous'];
+                            $overall=$overall+$value['overall']; 
+                        }
+                        $total=$working+$quality+$siterules+$environmental+$protection+$tools+$miscellaneous+$overall;
+                            
+                ?>
+                <tr></tr>
+                <tr>
+                    <td><?php echo '#'; ?></td>
+                    <td><?php echo $key; ?></td>
+                    <td><span class="ms-1"><?php echo $working ?></span></td>
+                    <td><?php echo $quality ?></td>
+                    <th width="20%"><?php echo $siterules ?> </th>
+                    <th width="20%"><?php echo $environmental ?></th>
+                    <td class="text-end" width="30%"><?php echo $protection ?></td>
+                    <td><?php echo $tools ?></td>
+                    <td><?php echo $miscellaneous ?></td>
+                    <td><?php echo $overall ?></td>
+                    <td><?php echo $total ?></td>
+                    
+                </tr>
+                <?php }
+                    else{?>
+                        <tr>
+                    <td><?php echo '#'; ?></td>
+                    <td><?php echo $key ?></td>
+                    <td><span class="ms-1">0</span></td>
+                    <td>0</td>
+                    <th width="20%">0 </th>
+                    <th width="20%">0</th>
+                    <td class="text-end" width="30%">0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                    <?php
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+<?php require_once 'view/footer.html';?>
+</body>
+</html>

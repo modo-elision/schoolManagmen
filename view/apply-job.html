@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>HJob Application</title>
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/fontawesome.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="./local-script.js"></script>
+   </head>
+   <body>
+      <?php require_once 'view/header.html';?>
+
+      <?php if(empty($this->apply_status)) 
+               {$btn_value="Apply"; }
+            else 
+            {$btn_value="Applied_Already";}
+            ?>
+            <script type="text/javascript">var btn_value="<?php  echo $btn_value;?>";</script>
+      <!-- section one start -->
+      <section class="position-relative">
+         <div class="container-fluid mp-sec-bg">
+            <div class="row">
+               <div class="col-12">
+                  <div class="section-two-bg">
+                     <div class="text-group py-5 text-center">
+                        <div class="h1">
+                           Online Happy Tech Job Application Recruitment System<span class="mp-text-secondary">.</span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- section one end -->
+      <section class="position-relative py-2 my-2">
+         <div class="container-fluid">
+            <div class="row py-3">
+               <div class="col-lg-10 col-sm-12 m-auto">
+                  <div class="apply-job-tile position-relative">
+                     <div class="op-job-expr pd-around" hidden="true" id="jod_id" value="<?php echo $this->job_details[0]['job_id'] ;?>"></div>
+                     <div class="op-job-title"><?php echo $this->job_details[0]['title'] ?></div>
+                     <div class="op-job-companyName"><?php echo $this->job_details[0]['company_name']; ?></div>
+                     <div class="op-job-companyName">Posted On:<?php echo $this->job_details[0]['post_date']; ?></div>
+                     <div class="op-job-details">
+                        <div class="op-job-expr pd-around"><span><i class="fa fa-briefcase" aria-hidden="true"></i></span> <?php echo $this->job_details[0]['required_experience'] ;?></div>
+                        <div class="op-job-salary pd-around"><span><i class="fa fa-usd" aria-hidden="true"></i></span> Not Disclosed</div>
+                        <div class="op-job-location pd-around"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span> Bradford</div>
+                     </div>
+                     <div class="op-job-tech">
+                        <div class="pr-2"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                        <div class="op-job-technologies"><?php echo $this->job_details[0]['post_comments'] ?></div>
+                     </div>
+                     <div class="op-job-tech">
+                        <div class="pr-2"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                        <div class="op-job-tech-desc"><?php echo $this->job_details[0]['brief_description'] ?></div>
+                     </div>
+                     <div class="op-job-tech">
+                        <div class="op-job-tech-desc">
+                           <ul class="px-3 m-0">
+                              <?php echo $this->job_details[0]['skilles_required'] ?>
+                           </ul>
+                        </div>
+                     </div>
+
+                     <!-- Add upload funtionality in below UI code -->
+                     <div class="py-2 row">
+                        <div class="col-6 p-0">
+                           <div class="custom-file mt-3 mb-3">
+                          <input type="file" class="custom-file-input" id="file-input" accept="application/pdf">
+                          <label class="custom-file-label" for="customFile">Custom file upload</label>
+                        </div>
+                        </div>
+                        <div class="col-4 d-flex align-items-center align-items-right">
+                           <div class="w-100">
+                               <button type="button" class="btn-primary form-control w-100 m-auto" value="submit_login" name="upload" id="upload-button">Upload</button>
+                           </div>
+                        </div>
+                     </div>
+                    <span id="file_responce">Previous file : <?php if(!empty($this->cv))echo($this->cv[0]['cv_location']);  ?></span>
+                     <div class="apply-job-btn-block my-3 d-flex align-items-center justify-content-center">
+                        <?php if(!empty($this->cv)){ ?>
+                        <button class="btn btn-primary mr-2 w-25" id="applyBtn" onclick="apply_job(<?php echo $_GET['job_id'] ?>)"><?php  echo $btn_value;?></button>
+                           <div class="op-job-tech">
+                        <?php }if(!empty($this->apply_status)){ ?>
+                           
+                           <div class="op-job-technologies">
+                              <?php echo date_format(date_create($this->apply_status[0]['applyed_time']),"d M Y") ;?>
+                           </div>
+                           <?php }?>
+                     </div>
+                     </div>
+                                       <!--- alert notification after successfull job apply-->
+                                       <!-- display toggle class d-none for hide and d-block for show the div -->
+                     <div class="alert alert-success alert-dismissible" style="visibility: hidden;" id="Success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Success!</strong> Your job is successfully applied. All the Very Best!....
+                     </div>
+
+                       <div class="alert alert-warning alert-dismissible" style="visibility: hidden;" id="Warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Warning!</strong> Your have already applied this job.
+                     </div>
+
+                       <div class="alert alert-danger alert-dismissible" style="visibility: hidden;" id="Danger">
+                           <button type="button" class="close" data-dismiss="alert">&times;</button>
+                           <strong>Danger!</strong> Somthing went wrong, Please try again after some time.
+                        </div>
+                     <!--- alert notification after successfull job apply-->
+               </div>
+            </div>
+         </div>
+         </div>
+      </section>
+      <!-- Footer start from here -->
+      <section>
+         <footer class="text-center">
+            <div class="footer_below">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <p> Copyright © Website 2021.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+      </section>
+      <!-- Footer start from here -->
+      <?php require_once 'view/footer_js.html';?>
+   
+   </body>
+</html>

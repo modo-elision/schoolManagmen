@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<?php require_once 'view/head.html';
+		
+	?>
+</head>
+<body>
+<?php require_once 'view/header.html';?>
+<div  class="text-center">
+	<h4 class="display-4">Health, Safety, Quality and Environmental Site Inspection</h4>
+</div>
+<div style="width:100%">
+	<hr>
+	<p class="h4 text-center"> Inspection Site Related Details</p><hr>
+	<form id="" action="inspection_submit.php" method="post" style="width:100%">
+		<table id="metaDataTable" class="table table-striped table-bordered table-hover" >
+			<tr>
+				<th>Site:</th>
+				<td><input type="text" id="site" name="primary[site]" /></td>
+				<th>Completed By:</th>
+				<td><input type="text" id="completedBy" name="primary[completedBy]" /></td>
+				<th>Date:</th>
+				<td><input type="text" id="date" name="primary[date]" /></td>
+			</tr>
+			<tr>
+				<th>Work Area:</th>
+				<td><input type="text" id="workArea" name="primary[workArea]" /></td>
+				<th>Job Description:</th>
+				<td colspan="3"><input type="text" id="jobDescription" name="primary[jobDescription]"  style="width: -webkit-fill-available;"/></td>
+			</tr>
+			<tr>
+				<th>Supervisor:</th>
+				<td><input type="text" id="Supervisor" name="primary[Supervisor]" /></td>
+				<th>Inspector:</th>
+				<td><input type="text" id="inspector" name="primary[inspector]" /></td>
+				<th>Type:</th>
+				<td><input type="text" id="type" name="primary[type]" /></td>
+			</tr>
+		</table>
+		<br/>
+		
+			<div class="table-responsive-md ">
+				<table id="surveyTable"  class="table table-striped table-bordered table-hover">
+					<thead class="thead-dark">
+						<tr>
+							<th></th>
+							<th scope="col">Intervention</th>
+							<th scope="col">Comment</th>
+							<th scope="col">Completed</th>
+							<th scope="col">Action Taken</th>
+						</tr>
+					</thead>
+					<tr>
+						<th scope="row">A. Working Standards</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td scope="row">1. Work At Height</td>
+						<td><input type="text" id="workHeightInterventions" name="working[workHeightInterventions]"/></td>
+						<td><textarea type="text" id="workHeightComment" name="working[workHeightComment]"></textarea></td>
+						<td><input type="text" id="workHeightCompleted" name="working[workHeightCompleted]"/></td>
+						<td><input type="text" id="workHeightActionTaken" name="working[workHeightActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td scope="row">2. Lifting Operations - Crane, Fork, Truck, Hoists etc</td>
+						<td><input type="text" id="liftingOpsInterventions" name="working[liftingOpsInterventions]"/></td>
+						<td><textarea type="text" id="liftingOpsComment" name="working[liftingOpsComment]"></textarea></td>
+						<td><input type="text" id="liftingOpsCompleted" name="working[liftingOpsCompleted]"/></td>
+						<td><input type="text" id="liftingOpsActionTaken" name="working[liftingOpsActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td scope="row">3. Certification - Daily Checksheets for MEWP and FLT</td>
+						<td><input type="text" id="certificationInterventions" name="working[certificationInterventions]"/></td>
+						<td><textarea type="text" id="certificationComment" name="working[certificationComment]"></textarea></td>
+						<td><input type="text" id="certificationCompleted" name="working[certificationCompleted]"/></td>
+						<td><input type="text" id="certificationActionTaken" name="working[certificationActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td scope="row">4. Confined Space Work</td>
+						<td><input type="text" id="confinedSpaceInterventions" name="working[confinedSpaceInterventions]"/></td>
+						<td><textarea type="text" id="confinedSpaceComment" name="working[confinedSpaceComment]"></textarea></td>
+						<td><input type="text" id="confinedSpaceCompleted" name="working[confinedSpaceCompleted]"/></td>
+						<td><input type="text" id="confinedSpaceActionTaken" name="working[confinedSpaceActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td scope="row">5. Electrical Work</td>
+						<td><input type="text" id="electricalWorkInterventions" name="working[electricalWorkInterventions]"/></td>
+						<td><textarea type="text" id="electricalWorkComment" name="working[electricalWorkComment]"></textarea></td>
+						<td><input type="text" id="electricalWorkCompleted" name="working[electricalWorkCompleted]"/></td>
+						<td><input type="text" id="electricalWorkActionTaken" name="working[electricalWorkActionTaken]"/></td>
+					</tr>
+					<tr>
+						<th>B. Quality</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>6. Sight Set Up & Appearance, Signage</td>
+						<td><input type="text" id="sightSignUpInterventions" name="quality[sightSignUpInterventions]"/></td>
+						<td><textarea type="text" id="sightSignUpComment" name="quality[sightSignUpComment]"></textarea></td>
+						<td><input type="text" id="sightSignUpCompleted" name="quality[sightSignUpCompleted]"/></td>
+						<td><input type="text" id="sightSignUpActionTaken" name="quality[sightSignUpActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>7. Paperwork (Permits, Risk Assessments, Method Statement)</td>
+						<td><input type="text" id="paperWorkInterventions" name="quality[sightSignUpInterventionsp]"/></td>
+						<td><textarea type="text" id="sightSignUpComment" name="quality[sightSignUpCommentp]"></textarea></td>
+						<td><input type="text" id="sightSignUpCompleted" name="quality[sightSignUpCompletedp]"/></td>
+						<td><input type="text" id="sightSignUpActionTaken" name="quality[sightSignUpActionTakenp]"/></td>
+					</tr>
+					<tr>
+						<td>8. Certification - Training, Insurance Inspection, Induction Current</td>
+						<td><input type="text" id="trainingInsuranceInterventions" name="quality[sightSignUpInterventionsc]"/></td>
+						<td><textarea type="text" id="sightSignUpCommentc" name="quality[sightSignUpCommentc]"></textarea></td>
+						<td><input type="text" id="sightSignUpCompleted" name="quality[sightSignUpCompletedc]"/></td>
+						<td><input type="text" id="sightSignUpActionTaken" name="quality[sightSignUpActionTakenc]"/></td>
+					</tr>
+					<tr>
+						<th>C. Site Rules</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>9. Hot Work</td>
+						<td><input type="text" id="hotWorkInterventions" name="site[hotWorkInterventions]"/></td>
+						<td><textarea type="text" id="hotWorkComment" name="site[hotWorkComment]"></textarea></td>
+						<td><input type="text" id="hotWorkCompleted" name="site[hotWorkCompleted]"/></td>
+						<td><input type="text" id="hotWorkActionTaken" name="site[hotWorkActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>10. Isolation and Lock Offs</td>
+						<td><input type="text" id="isolationInterventions" name="site[isolationInterventions]"/></td>
+						<td><textarea type="text" id="isolationComment" name="site[isolationComment]"></textarea></td>
+						<td><input type="text" id="isolationCompleted" name="site[isolationCompleted]"/></td>
+						<td><input type="text" id="isolationActionTaken" name="site[isolationActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>11. Fire Exits and Escape Routes</td>
+						<td><input type="text" id="fireExitsInterventions" name="site[fireExitsInterventions]"/></td>
+						<td><textarea type="text" id="fireExitsComment" name="site[fireExitsComment]"></textarea></td>
+						<td><input type="text" id="fireExitsCompleted" name="site[fireExitsCompleted]"/></td>
+						<td><input type="text" id="fireExitsActionTaken" name="site[fireExitsActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>12. Awareness - Fire Exit, Assembly Point</td>
+						<td><input type="text" id="assemblyPointInterventions" name="site[assemblyPointInterventions]"/></td>
+						<td><textarea type="text" id="assemblyPointComment" name="site[assemblyPointComment]"></textarea></td>
+						<td><input type="text" id="assemblyPointCompleted" name="site[assemblyPointCompleted]"/></td>
+						<td><input type="text" id="assemblyPointActionTaken" name="site[assemblyPointActionTaken]"/></td>
+					</tr>
+					<tr>
+						<th>D. Environmental</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>13. Waste Management</td>
+						<td><input type="text" id="wasteMgmntInterventions" name="environmental[wasteMgmntInterventions]"/></td>
+						<td><textarea type="text" id="wasteMgmntComment" name="environmental[wasteMgmntComment]"></textarea></td>
+						<td><input type="text" id="wasteMgmntCompleted" name="environmental[wasteMgmntCompleted]"/></td>
+						<td><input type="text" id="wasteMgmntActionTaken" name="environmental[wasteMgmntActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>14. Product Contamination</td>
+						<td><input type="text" id="productContInterventions" name="environmental[productContInterventions]"/></td>
+						<td><textarea type="text" id="productContComment" name="environmental[productContComment]"></textarea></td>
+						<td><input type="text" id="productContCompleted" name="environmental[productContCompleted]"/></td>
+						<td><input type="text" id="productContActionTaken" name="environmental[productContActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>15. COSHH & Asbestos</td>
+						<td><input type="text" id="coshhInterventions" name="environmental[coshhInterventions]"/></td>
+						<td><textarea type="text" id="coshhComment" name="environmental[coshhComment]"></textarea></td>
+						<td><input type="text" id="coshhCompleted" name="environmental[coshhCompleted]"/></td>
+						<td><input type="text" id="coshhActionTaken" name="environmental[coshhActionTaken]"/></td>
+					</tr>
+					<tr>
+						<th>E. Protection Of Individuals</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>16. PPE</td>
+						<td><input type="text" id="ppeInterventions" name="protection[ppeInterventions]"/></td>
+						<td><textarea type="text" id="ppeComment" name="protection[ppeComment]"></textarea></td>
+						<td><input type="text" id="ppeCompleted" name="protection[ppeCompleted]"/></td>
+						<td><input type="text" id="ppeActionTaken" name="protection[ppeActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>17. Manual Handling</td>
+						<td><input type="text" id="manualHandlingInterventions" name="protection[manualHandlingInterventions]"/></td>
+						<td><textarea type="text" id="manualHandlingComment" name="protection[manualHandlingComment]"></textarea></td>
+						<td><input type="text" id="manualHandlingCompleted" name="protection[manualHandlingCompleted]"/></td>
+						<td><input type="text" id="manualHandlingActionTaken" name="protection[manualHandlingActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>18. Other Contractors</td>
+						<td><input type="text" id="otherContrInterventions" name="protection[otherContrInterventions]"/></td>
+						<td><textarea type="text" id="otherContrComment" name="protection[otherContrComment]"></textarea></td>
+						<td><input type="text" id="otherContrCompleted" name="protection[otherContrCompleted]"/></td>
+						<td><input type="text" id="otherContrActionTaken" name="protection[otherContrActionTaken]"/></td>
+					</tr>
+					<tr>
+						<th>F. Tools, Cables & Other Equipments</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>19. Power Tools, Cables & Other Equipment</td>
+						<td><input type="text" id="powerToolsInterventions" name="tool[powerToolsInterventions]"/></td>
+						<td><textarea type="text" id="powerToolsComment" name="tool[powerToolsComment]"></textarea></td>
+						<td><input type="text" id="powerToolsCompleted" name="tool[powerToolsCompleted]"/></td>
+						<td><input type="text" id="powerToolsActionTaken" name="tool[powerToolsActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>20. Voltage Detector Checked</td>
+						<td><input type="text" id="voltageDetectInterventions" name="tool[voltageDetectInterventions]"/></td>
+						<td><textarea type="text" id="voltageDetectComment" name="tool[voltageDetectComment]"></textarea></td>
+						<td><input type="text" id="voltageDetectCompleted" name="tool[voltageDetectCompleted]"/></td>
+						<td><input type="text" id="voltageDetectActionTaken" name="tool[voltageDetectActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>21. Tools Used Fit For Purpose</td>
+						<td><input type="text" id="usedFitInterventions" name="tool[usedFitInterventions]"/></td>
+						<td><textarea type="text" id="usedFitComment" name="tool[usedFitComment]"></textarea></td>
+						<td><input type="text" id="usedFitCompleted" name="tool[usedFitCompleted]"/></td>
+						<td><input type="text" id="usedFitActionTaken" name="tool[usedFitActionTaken]"/></td>
+					</tr>
+					<tr>
+						<th>G. Miscellaneous</th>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>22. Company Vehicles</td>
+						<td><input type="text" id="companyVehiclesInterventions" name="miscellaneous[companyVehiclesInterventions]"/></td>
+						<td><textarea type="text" id="companyVehiclesComment" name="miscellaneous[companyVehiclesComment]"></textarea></td>
+						<td><input type="text" id="companyVehiclesCompleted" name="miscellaneous[companyVehiclesCompleted]"/></td>
+						<td><input type="text" id="companyVehiclesActionTaken" name="miscellaneous[companyVehiclesActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>23. Fire Precautions</td>
+						<td><input type="text" id="firePrecsInterventions" name="miscellaneous[firePrecsInterventions]"/></td>
+						<td><textarea type="text" id="firePrecsComment" name="miscellaneous[firePrecsComment]"></textarea></td>
+						<td><input type="text" id="firePrecsCompleted" name="miscellaneous[firePrecsCompleted]"/></td>
+						<td><input type="text" id="firePrecsActionTaken" name="miscellaneous[firePrecsActionTaken]"/></td>
+					</tr>
+					<tr>
+						<td>24. Workshop Conditions</td>
+						<td><input type="text" id="workshopCondInterventions" name="miscellaneous[workshopCondInterventions]"/></td>
+						<td><textarea type="text" id="workshopCondComment" name="miscellaneous[workshopCondComment]"></textarea></td>
+						<td><input type="text" id="workshopCondCompleted" name="miscellaneous[workshopCondCompleted]"/></td>
+						<td><input type="text" id="workshopCondActionTaken" name="miscellaneous[workshopCondActionTaken]"/></td>
+					</tr>
+					<tr>
+						<th>Total Interventions By Section</th>
+						<td>Enter the Number of Interventions</td>
+					</tr>
+					<tr>
+						<td>A. Working Standards</td>
+						<td><input type="Number" id="totalBySectionWorkStandards" name="number[working]" required /></td>
+					</tr>
+					<tr>
+						<td>B. Quality</td>
+						<td><input type="Number" id="totalBySectionWorkStandards" name="number[quality]" required /></td>
+					</tr>
+					<tr>
+						<td>C. Site Rules</td>
+						<td><input type="Number" id="totalBySectionWorkStandards" name="number[siterules]" required /></td>
+					</tr>
+					<tr>
+						<td>D. Environmental</td>
+						<td><input type="Number" id="totalBySectionWorkStandards" name="number[environmental]" required /></td>
+					</tr>
+					<tr>
+						<td>E. Protection Of Individuals</td>
+						<td><input type="Number" id="totalBySectionWorkStandards" name="number[protection]" required /></td>
+					</tr>
+					<tr>
+						<td>F. Tools, Cables & Other Equipments</td>
+						<td><input type="Number" id="totalBySectionWorkStandards" name="number[tools]" required /></td>
+					</tr>
+					<tr>
+						<td>G. Miscellaneous</td>
+						<td><input type="Number" id="totalBySectionWorkStandards" name="number[miscellaneous]" required /></td>
+					</tr>
+					<tr>
+						<th>Overall</th>
+						<td><input type="Number" id="totalBySectionOverall" name="number[overall]" required /></td>
+					</tr>
+				</table>
+			</div>
+		
+		<br/>
+		<div>
+			<input class="btn btn-primary btn-lg btn-block" type="submit" name="Submit" value="Submit" id="submit" />
+		</div>
+	</form>
+</div>
+</body>
+
+</html>

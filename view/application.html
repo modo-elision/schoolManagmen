@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Inspection Application</title>
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/fontawesome.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <script src="./local-script.js"></script>
+   </head>
+   <body>
+      <?php require_once 'view/header.html';?>
+
+      <?php /*if(empty($this->apply_status)) 
+               {$btn_value="Apply"; }
+            else 
+            {$btn_value="Applied_Already";}*/
+            ?>
+      <!-- section one start -->
+      <section class="position-relative">
+         <div class="container-fluid mp-sec-bg">
+            <div class="row">
+               <div class="col-12">
+                  <div class="section-two-bg">
+                     <div class="text-group py-5 text-center">
+                        <div class="h1">
+                           Inspection Managment System<span class="mp-text-secondary">.</span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- section one end -->
+      <section class="position-relative py-2 my-2">
+         <div class="container-fluid">
+            <div class="row py-3">
+               <div class="col-lg-10 col-sm-12 m-auto">
+                  <div class="apply-job-tile position-relative">
+                     <div class="op-job-expr pd-around" hidden="true" id="app_id" ></div>
+                     <div class="op-job-title"> Applicant Name :<?php echo $this->app_details[0]['user_details']['full_name'] ?></div>
+                     <div class="op-job-title">Email-Id : <?php echo $this->app_details[0]['user_details']['email_id'] ?></div>
+                     <div class="op-job-title">Job Name: <?php echo $this->app_details[0]['job_details']['title'] ?></div>
+                     <div class="op-job-companyName"><?php echo $this->app_details[0]['job_details']['company_name']; ?></div>
+                     <div class="op-job-companyName">Posted on:<?php echo $this->app_details[0]['job_details']['post_date']; ?></div>
+                     <div class="op-job-details">
+                        <div class="op-job-expr pd-around"><span><i class="fa fa-briefcase" aria-hidden="true"></i></span> <?php echo $this->app_details[0]['job_details']['required_experience'] ;?></div>
+                        <div class="op-job-salary pd-around"><span><i class="fa fa-usd" aria-hidden="true"></i></span> Not Disclosed</div>
+                        <div class="op-job-location pd-around"><span><i class="fa fa-map-marker" aria-hidden="true"></i></span> Bradford</div>
+                     </div>
+                     
+                     <div class="op-job-tech">
+                        <div class="pr-2"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                        <div class="op-job-tech-desc"><?php echo $this->app_details[0]['job_details']['brief_description'] ?></div>
+                     </div>
+                  </div>
+                     <div class="my-3 apply-job-tile position-relative">
+                        <div class="d-flex align-items-center">
+                           <label class="label-text my-3 col-2 p-0">View Details : </label>
+                            <a class="btn btn-outline-primary ml-2" href="<?php echo $this->app_details[0]['cv_location']?>" target="_blank" >User Resume or CV</a>
+                        </div>
+                        
+                        <form action="responce.php" method="post" >
+                     
+                           <div class="form-group w-50 d-flex align-items-center">
+                           <label class="label-text my-3 col-4 p-0">Select Template:</label>
+                           <select name="Template_select" class="form-control">
+                              <option value="wait">Waiting for approvel</option>
+                              <option value="reject">Reject Candidate</option>
+                              <option value="next_round">Proceed For Next Round</option>
+                              <option value="accept">Accept Candidate</option>   
+                           </select>
+                        </div> 
+                        <input type="text" class="form-control" placeholder="free comment"  name="app_id"value="<?php echo $this->app_details[0]['application_id']?>" hidden="True">
+                        <div class="form-group">
+                            <label class="label-text m-0">Free comment : </label>
+                           <!--  <input type="text" class="form-control" placeholder="free comment"  name="free_comment"value="" /> -->
+                            <textarea class="form-control" style="resize: none;" placeholder="free comment" rows="5" id="comment" name="free_comment"value=""></textarea>
+                        </div>
+                       <button class="btn btn-primary" id="responceBtn" onclick="alert('Confirm Submit')";>
+                            Submit 
+                           </button>
+                        </div>                          
+                     </form>
+                     </div>
+                     </div>
+                                       <!--- alert notification after successfull job apply-->
+                     <div class="alert alert-success alert-dismissible" style="visibility: hidden;" id="Success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Success!</strong> Your job is successfully applied. All the Very Best!....
+                     </div>
+
+                       <div class="alert alert-warning alert-dismissible" style="visibility: hidden;" id="Warning">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Warning!</strong> Your have already applied this job.
+                     </div>
+
+                       <div class="alert alert-danger alert-dismissible" style="visibility: hidden;" id="Danger">
+                           <button type="button" class="close" data-dismiss="alert">&times;</button>
+                           <strong>Danger!</strong> Somthing went wrong, Please try again after some time.
+                        </div>
+                     <!--- alert notification after successfull job apply-->
+               </div>
+            </div>
+         </div>
+         </div>
+      </section>
+      <!-- Footer start from here -->
+      <section>
+         <footer class="text-center">
+            <div class="footer_below">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-lg-12">
+                        <p> Copyright © Website 2021.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+      </section>
+      <!-- Footer start from here -->
+      <?php //require_once 'view/footer_js.html';?>
+   </body>
+</html>
